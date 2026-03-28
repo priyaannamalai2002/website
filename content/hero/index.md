@@ -1,7 +1,7 @@
 ---
 title: 'Hi, my name is'
 name: 'Lakshmi Priya A'
-subtitle: 'AI Engineer | Generative AI | Healthcare AI'
+subtitle: 'iXp Intern | Biomedical Engineering'
 buttonText: 'Get In Touch'
 ---
 

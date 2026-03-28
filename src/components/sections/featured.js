@@ -38,6 +38,24 @@ const StyledPublicationCard = styled.a`
   }
 `;
 
+const StyledImg = styled(Img)`
+  width: 100%;
+  height: 100%;
+  border-radius: ${theme.borderRadius};
+  transition: ${theme.transition};
+  mix-blend-mode: multiply;
+  filter: grayscale(100%) contrast(1) brightness(90%);
+
+  & > div {
+    height: 100% !important;
+  }
+
+  img {
+    object-fit: cover !important;
+    height: 100% !important;
+  }
+`;
+
 const StyledImageWrapper = styled.div`
   ${mixins.boxShadow};
   position: relative;
@@ -72,24 +90,6 @@ const StyledImageWrapper = styled.div`
     transition: ${theme.transition};
     background-color: ${colors.navy};
     mix-blend-mode: screen;
-  }
-`;
-
-const StyledImg = styled(Img)`
-  width: 100%;
-  height: 100%;
-  border-radius: ${theme.borderRadius};
-  transition: ${theme.transition};
-  mix-blend-mode: multiply;
-  filter: grayscale(100%) contrast(1) brightness(90%);
-
-  & > div {
-    height: 100% !important;
-  }
-
-  img {
-    object-fit: cover !important;
-    height: 100% !important;
   }
 `;
 

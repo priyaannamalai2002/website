@@ -11,19 +11,25 @@ const StyledContainer = styled(Section)`
   flex-direction: column;
   align-items: flex-start;
   min-height: 100vh;
-  height: 100vh;
-  padding: 0;
+  padding: 0 !important;
   margin: 0 auto;
-  max-width: 1600px;
+  max-width: 100%;
+  width: 100%;
+  
   ${media.desktop`
-    height: auto;
-    padding-top: 150px;
+    min-height: 100vh;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   `};
   ${media.tablet`
-    padding-top: 120px;
+    min-height: 100vh;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   `};
   ${media.phablet`
-    padding-top: 100px;
+    min-height: 100vh;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   `};
 `;
 
@@ -33,9 +39,16 @@ const StyledContent = styled.div`
   align-items: flex-start;
   width: 100%;
   max-width: 1000px;
-  padding: 0 50px;
+  padding: 0;
   margin: 0 auto;
+  
+  ${media.desktop`
+    padding: 0 100px;
+  `};
   ${media.tablet`
+    padding: 0 50px;
+  `};
+  ${media.phablet`
     padding: 0 25px;
   `};
 `;
@@ -81,7 +94,7 @@ const StyledEmailLink = styled.a`
   margin-top: 50px;
 `;
 
-const Hero = ({ data, isHome }) => {
+const Hero = ({ data }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
