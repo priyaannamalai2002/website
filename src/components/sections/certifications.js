@@ -15,27 +15,20 @@ const StyledContainer = styled(Section)`
 const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 30px;
+  grid-gap: 20px;
   margin-top: 50px;
-  max-width: 800px;
+  width: 100%;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 
-  ${media.desktop`
-    max-width: 700px;
-  `};
-
-  ${media.tablet`
-    grid-gap: 25px;
-    max-width: 600px;
-  `};
-
-  ${media.phablet`
-    grid-gap: 20px;
+  @media (max-width: 768px) {
+    grid-gap: 15px;
     max-width: 400px;
-  `};
+  }
 
   @media (max-width: 480px) {
+    grid-gap: 10px;
     max-width: 300px;
   }
 `;
@@ -44,25 +37,23 @@ const StyledCertCard = styled.div`
   ${mixins.boxShadow};
   background-color: ${colors.lightNavy};
   border-radius: ${theme.borderRadius};
-  padding: 25px;
+  padding: 20px;
   transition: ${theme.transition};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  min-height: 250px;
+  aspect-ratio: 1 / 1;
   cursor: pointer;
 
-  ${media.tablet`
-    padding: 20px;
-    min-height: 230px;
-  `};
-
-  ${media.thone`
+  @media (max-width: 768px) {
     padding: 15px;
-    min-height: 210px;
-  `};
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+  }
 
   &:hover {
     transform: translateY(-5px);
@@ -75,23 +66,23 @@ const StyledCertCard = styled.div`
 `;
 
 const StyledCertImageWrapper = styled.div`
-  width: 80px;
-  height: 80px;
-  margin-bottom: 15px;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 
-  ${media.tablet`
-    width: 70px;
-    height: 70px;
-  `};
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
 
-  ${media.thone`
-    width: 60px;
-    height: 60px;
-  `};
+  @media (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const StyledCertImage = styled.img`
@@ -104,20 +95,24 @@ const StyledCertImage = styled.img`
 `;
 
 const StyledCertTitle = styled.h3`
-  font-size: ${fontSizes.md};
+  font-size: ${fontSizes.sm};
   font-weight: 600;
   color: ${colors.lightestSlate};
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.2;
   margin: 0;
   flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  ${media.desktop`font-size: ${fontSizes.sm};`};
-  ${media.tablet`font-size: ${fontSizes.smish};`};
-  ${media.thone`font-size: ${fontSizes.xs};`};
+  @media (max-width: 768px) {
+    font-size: ${fontSizes.xs};
+  }
+
+  @media (max-width: 480px) {
+    font-size: ${fontSizes.xxs};
+  }
 `;
 
 const CertificationsSection = () => {
