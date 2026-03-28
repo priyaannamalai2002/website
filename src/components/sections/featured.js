@@ -3,147 +3,62 @@ import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
-import { FormattedIcon } from '@components/icons';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, Heading } from '@styles';
-const { colors, fontSizes, fonts } = theme;
+const { colors, fontSizes } = theme;
 
 const StyledContainer = styled(Section)`
-  ${mixins.flexCenter};
-  flex-direction: column;
-  align-items: flex-start;
-`;
-const StyledContent = styled.div`
   position: relative;
-  grid-column: 1 / 7;
-  grid-row: 1 / -1;
-  ${media.thone`
-    grid-column: 1 / -1;
-    padding: 40px 40px 30px;
-    z-index: 5;
-  `};
-  ${media.phablet`padding: 30px 25px 20px;`};
 `;
-const StyledLabel = styled.h4`
-  font-size: ${fontSizes.smish};
-  font-weight: normal;
-  color: ${colors.green};
-  font-family: ${fonts.SFMono};
-  margin-top: 10px;
-  padding-top: 0;
-`;
-const StyledProjectName = styled.h5`
-  font-size: 28px;
-  margin: 0 0 20px;
-  color: ${colors.lightestSlate};
-  ${media.tablet`font-size: 24px;`};
-  ${media.thone`color: ${colors.white};`};
-  a {
-    ${media.tablet`display: block;`};
-  }
-`;
-const StyledDescription = styled.div`
-  ${mixins.boxShadow};
-  position: relative;
-  z-index: 2;
-  padding: 25px;
-  background-color: ${colors.lightNavy};
-  color: ${colors.lightSlate};
-  font-size: ${fontSizes.lg};
-  border-radius: ${theme.borderRadius};
-  ${media.thone`
-    background-color: transparent;
-    padding: 20px 0;
-    box-shadow: none;
-    &:hover {
-      box-shadow: none;
-    }
-  `};
-  p {
-    margin: 0;
-  }
-  a {
-    ${mixins.inlineLink};
-  }
-`;
-const StyledTechList = styled.ul`
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 25px 0 10px;
-  list-style: none;
 
-  li {
-    font-family: ${fonts.SFMono};
-    font-size: ${fontSizes.smish};
-    color: ${colors.green};
-    margin-right: ${theme.margin};
-    margin-bottom: 7px;
-    white-space: nowrap;
-    &:last-of-type {
-      margin-right: 0;
-    }
-    ${media.thone`
-      color: ${colors.green};
-      margin-right: 10px;
-    `};
-  }
-`;
-const StyledLinkWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-top: 10px;
-  margin-left: -10px;
-  color: ${colors.lightestSlate};
-  a {
-    padding: 10px;
-    svg {
-      width: 22px;
-      height: 22px;
-    }
-  }
-`;
-const StyledFeaturedImg = styled(Img)`
+const StyledGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
   width: 100%;
-  max-width: 100%;
-  vertical-align: middle;
-  border-radius: ${theme.borderRadius};
-  position: relative;
-  mix-blend-mode: multiply;
-  filter: grayscale(100%) contrast(1) brightness(90%);
+  margin-top: 50px;
+
   ${media.tablet`
-    object-fit: cover;
-    width: auto;
-    height: 100%;
-    filter: grayscale(100%) contrast(1) brightness(80%);
+    grid-template-columns: repeat(2, 1fr);
+  `};
+
+  ${media.thone`
+    grid-template-columns: 1fr;
   `};
 `;
-const StyledImgContainer = styled.a`
+
+const StyledPublicationCard = styled.a`
+  position: relative;
+  cursor: pointer;
+  transition: ${theme.transition};
+  display: block;
+
+  &:hover {
+    transform: translateY(-7px);
+  }
+`;
+
+const StyledImageWrapper = styled.div`
   ${mixins.boxShadow};
-  grid-column: 6 / -1;
-  grid-row: 1 / -1;
   position: relative;
   z-index: 1;
   background-color: ${colors.green};
-  border-radius: ${theme.radius + 1}px;
+  border-radius: ${theme.borderRadius};
+  overflow: hidden;
   transition: ${theme.transition};
-  ${media.tablet`height: 100%;`};
-  ${media.thone`
-    grid-column: 1 / -1;
-    opacity: 0.25;
-  `};
-  &:hover,
-  &:focus {
-    background: transparent;
-    &:before,
-    ${StyledFeaturedImg} {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 20px;
+
+  &:hover {
+    &:before {
       background: transparent;
+    }
+    ${StyledImg} {
       filter: none;
     }
   }
+
   &:before {
     content: '';
     position: absolute;
@@ -159,49 +74,39 @@ const StyledImgContainer = styled.a`
     mix-blend-mode: screen;
   }
 `;
-const StyledProject = styled.div`
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(12, 1fr);
-  align-items: center;
-  margin-bottom: 100px;
-  ${media.thone`
-    margin-bottom: 70px;
-  `};
-  &:last-of-type {
-    margin-bottom: 0;
+
+const StyledImg = styled(Img)`
+  width: 100%;
+  height: 100%;
+  border-radius: ${theme.borderRadius};
+  transition: ${theme.transition};
+  mix-blend-mode: multiply;
+  filter: grayscale(100%) contrast(1) brightness(90%);
+
+  & > div {
+    height: 100% !important;
   }
-  &:nth-of-type(odd) {
-    ${StyledContent} {
-      grid-column: 7 / -1;
-      text-align: right;
-      ${media.thone`
-        grid-column: 1 / -1;
-        padding: 40px 40px 30px;
-      `};
-      ${media.phablet`padding: 30px 25px 20px;`};
-    }
-    ${StyledTechList} {
-      justify-content: flex-end;
-      li {
-        margin-left: ${theme.margin};
-        margin-right: 0;
-      }
-    }
-    ${StyledLinkWrapper} {
-      justify-content: flex-end;
-      margin-left: 0;
-      margin-right: -10px;
-    }
-    ${StyledImgContainer} {
-      grid-column: 1 / 8;
-      ${media.tablet`height: 100%;`};
-      ${media.thone`
-        grid-column: 1 / -1;
-        opacity: 0.25;
-      `};
-    }
+
+  img {
+    object-fit: cover !important;
+    height: 100% !important;
   }
+`;
+
+const StyledTitle = styled.h3`
+  font-size: ${fontSizes.xxl};
+  font-weight: 600;
+  color: ${colors.lightestSlate};
+  margin-bottom: 10px;
+  line-height: 1.3;
+  text-align: center;
+`;
+
+const StyledDescription = styled.p`
+  font-size: ${fontSizes.md};
+  color: ${colors.slate};
+  line-height: 1.5;
+  text-align: center;
 `;
 
 const Featured = ({ data }) => {
@@ -209,6 +114,7 @@ const Featured = ({ data }) => {
 
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
+
   useEffect(() => {
     sr.reveal(revealTitle.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
@@ -216,71 +122,30 @@ const Featured = ({ data }) => {
 
   return (
     <StyledContainer id="projects">
-      <Heading ref={revealTitle}>Some Things I&apos;ve Built</Heading>
+      <Heading ref={revealTitle}>Publications</Heading>
 
-      <div>
+      <StyledGrid>
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover } = frontmatter;
+            const { external, title, cover } = frontmatter;
 
             return (
-              <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
-                <StyledContent>
-                  <StyledLabel>Featured Project</StyledLabel>
-                  <StyledProjectName>
-                    {external ? (
-                      <a
-                        href={external}
-                        target="_blank"
-                        rel="nofollow noopener noreferrer"
-                        aria-label="External Link">
-                        {title}
-                      </a>
-                    ) : (
-                      title
-                    )}
-                  </StyledProjectName>
-                  <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
-                  {tech && (
-                    <StyledTechList>
-                      {tech.map((tech, i) => (
-                        <li key={i}>{tech}</li>
-                      ))}
-                    </StyledTechList>
-                  )}
-                  <StyledLinkWrapper>
-                    {github && (
-                      <a
-                        href={github}
-                        target="_blank"
-                        rel="nofollow noopener noreferrer"
-                        aria-label="GitHub Link">
-                        <FormattedIcon name="GitHub" />
-                      </a>
-                    )}
-                    {external && (
-                      <a
-                        href={external}
-                        target="_blank"
-                        rel="nofollow noopener noreferrer"
-                        aria-label="External Link">
-                        <FormattedIcon name="External" />
-                      </a>
-                    )}
-                  </StyledLinkWrapper>
-                </StyledContent>
-
-                <StyledImgContainer
-                  href={external ? external : github ? github : '#'}
-                  target="_blank"
-                  rel="nofollow noopener noreferrer">
-                  <StyledFeaturedImg fluid={cover.childImageSharp.fluid} alt={title} />
-                </StyledImgContainer>
-              </StyledProject>
+              <StyledPublicationCard
+                key={i}
+                href={external || '#'}
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                ref={el => (revealProjects.current[i] = el)}>
+                <StyledImageWrapper>
+                  <StyledImg fluid={cover.childImageSharp.fluid} alt={title} />
+                </StyledImageWrapper>
+                <StyledTitle>{title}</StyledTitle>
+                <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
+              </StyledPublicationCard>
             );
           })}
-      </div>
+      </StyledGrid>
     </StyledContainer>
   );
 };

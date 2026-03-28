@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { Layout, Hero, About, Jobs, Featured, Projects, Contact } from '@components';
+import { Layout, Hero, About, Jobs, SAP, Featured, Certifications, Contact } from '@components';
 import styled from 'styled-components';
 import { Main } from '@styles';
 
@@ -9,18 +9,22 @@ const StyledMainContainer = styled(Main)`
   counter-reset: section;
 `;
 
-const IndexPage = ({ location, data }) => (
-  <Layout location={location}>
-    <StyledMainContainer className="fillHeight">
-      <Hero data={data.hero.edges} />
-      <About data={data.about.edges} />
-      <Jobs data={data.jobs.edges} />
-      <Featured data={data.featured.edges} />
-      <Projects data={data.projects.edges} />
-      <Contact data={data.contact.edges} />
-    </StyledMainContainer>
-  </Layout>
-);
+const IndexPage = ({ location, data }) => {
+  const isHome = location.pathname === '/';
+  return (
+    <Layout location={location}>
+      <StyledMainContainer className="fillHeight">
+        <Hero data={data.hero.edges} isHome={isHome} />
+        <About data={data.about.edges} />
+        <Jobs data={data.jobs.edges} />
+        <SAP data={data.sap.edges} />
+        <Featured data={data.featured.edges} />
+        <Certifications data={data.certifications.edges} />
+        <Contact data={data.contact.edges} />
+      </StyledMainContainer>
+    </Layout>
+  );
+};
 
 IndexPage.propTypes = {
   location: PropTypes.object.isRequired,
@@ -49,14 +53,6 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             title
-            avatar {
-              childImageSharp {
-                fluid(maxWidth: 700, quality: 90, traceSVG: { color: "#64ffda" }) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
-              }
-            }
-            skills
           }
           html
         }
@@ -74,6 +70,23 @@ export const pageQuery = graphql`
             location
             range
             url
+            logo {
+              childImageSharp {
+                fluid(maxWidth: 700, quality: 90, traceSVG: { color: "#64ffda" }) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
+          }
+          html
+        }
+      }
+    }
+    sap: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/sap/" } }) {
+      edges {
+        node {
+          frontmatter {
+            title
           }
           html
         }
@@ -102,20 +115,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    projects: allMarkdownRemark(
-      filter: {
-        fileAbsolutePath: { regex: "/projects/" }
-        frontmatter: { showInProjects: { ne: false } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
+    certifications: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/certifications/" } }) {
       edges {
         node {
           frontmatter {
             title
-            tech
-            github
-            external
           }
           html
         }

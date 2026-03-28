@@ -1,10 +1,10 @@
 ---
-title: 'Hello, my name is'
-name: 'Yashita Namdeo'
-subtitle: 'I love exploring new things!'
+title: 'Hi, my name is'
+name: 'Lakshmi Priya A'
+subtitle: 'AI Engineer | Generative AI | Healthcare AI'
 buttonText: 'Get In Touch'
 ---
 
-I'm a Final Year Computer Science Engineering Student at SVVV, Indore. Primarily interested in Web Development and Data Science.
+iXp Intern at SAP Labs building enterprise GenAI systems at the intersection of research, scalable engineering, and real-world impact.
 
-I enjoy learning new skills and implementing them in real life!
+Beyond technology, I’m inspired by books, continuous learning, and volunteering for meaningful social impact.

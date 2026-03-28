@@ -6,15 +6,26 @@ import { theme, media } from '@styles';
 const { colors, loaderDelay } = theme;
 
 const StyledContainer = styled.div`
-  width: 40px;
+  width: ${props => (props.orientation === 'left' ? '40px' : '30px')};
   position: fixed;
   bottom: 0;
   left: ${props => (props.orientation === 'left' ? '40px' : 'auto')};
-  right: ${props => (props.orientation === 'left' ? 'auto' : '40px')};
+  right: ${props => (props.orientation === 'left' ? 'auto' : '30px')};
   z-index: 10;
   color: ${colors.green};
-  ${media.desktop`right: 25px;`};
+  ${media.desktop`
+    left: ${props => (props.orientation === 'left' ? '20px' : 'auto')};
+    right: ${props => (props.orientation === 'left' ? 'auto' : '20px')};
+  `};
   ${media.tablet`display: none;`};
+`;
+
+const StyledText = styled.div`
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  margin-bottom: 20px;
 `;
 
 const Side = ({ children, isHome, orientation }) => {
@@ -26,14 +37,14 @@ const Side = ({ children, isHome, orientation }) => {
     }
     const timeout = setTimeout(() => setIsMounted(true), loaderDelay);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [isHome]);
 
   return (
     <StyledContainer orientation={orientation}>
       <TransitionGroup component={null}>
         {isMounted && (
           <CSSTransition classNames={isHome ? 'fade' : ''} timeout={isHome ? loaderDelay : 0}>
-            {children}
+            {orientation === 'left' ? children : <StyledText>{children}</StyledText>}
           </CSSTransition>
         )}
       </TransitionGroup>

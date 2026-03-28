@@ -1,22 +1,9 @@
 ---
 title: 'About Me'
-avatar: 'me.jpg'
-skills:
-  - Coding
-  - Reading
-  - Painting
-  - Crafting
-  - Problem Solving
-  - Team Management
-  - Mentoring
 ---
 
-Hello! I'm Yashita Namdeo, from Indore, also known as Mini Mumbai and the Cleanest City of India.
+Hello! I'm **Lakshmi Priya A**, currently working as an **iXp Intern at SAP Labs, Bangalore**, where I contribute to building **LLM-based AI systems using RAG and multi-agent frameworks** for enterprise use cases. My work also involves working with **SAP AI Core, SAP BTP, SAP UI5, and CAP**, allowing me to bridge intelligent AI workflows with scalable enterprise applications and product-driven experiences.
 
-I am a creative, time punctual, dedicated, goal-oriented individual with decent moral Values and Ethicates along with a high-energy level, honed communication skills, strong organizational skills, and meticulous attention to detail.
+With an academic background spanning **Artificial Intelligence and Biomedical Engineering**, I bring a multidisciplinary perspective shaped by research in **healthcare AI, medical imaging, and federated learning**. I'm especially passionate about applying intelligent systems to real-world problems that demand both technical depth and meaningful impact.
 
-I am pursuing my Bachelors from [SVVV, Indore](https://www.svvv.edu.in/) in Computer Science and Engineering (2018-2022) my current GPA is [3.7]() out of 4.
-
-I am a member of [Developer Student Club - SVVV](https://dsc.community.dev/shri-vaishnav-vidyapeeth-vishwavidyalaya/) and have also been awarded 75% Merit Scholarship(Top 10%) by my college.
-
-Here are a few of the other activities that I love to do!
+Beyond work, I enjoy **reading books, exploring research-driven ideas, and volunteering for meaningful social initiatives**, which continue to shape my curiosity, creativity, and purpose as I grow in the technology space.

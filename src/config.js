@@ -1,38 +1,38 @@
 module.exports = {
-  siteTitle: 'Yashita Namdeo',
+  siteTitle: 'Lakshmi Priya A',
   siteDescription:
-    'Yashita Namdeo is an incoming Software Developer, based in India, who loves learning new things and helping tech beginners.',
+    'Lakshmi Priya A is an AI Engineer specializing in LLM-based systems, RAG pipelines, and multi-agent architectures with a strong background in healthcare AI and biomedical engineering.',
   siteKeywords:
-    'Yashita Namdeo, Yashita, Namdeo, yashitanamdeo, software engineer, web developer, javascript, python, java, svvv, indore',
+    'Lakshmi Priya A, Lakshmi Priya, Priya, AI Engineer, Machine Learning, LLM, RAG, GenAI, Healthcare AI, SAP Labs, Deep Learning, NLP, Computer Vision, python, pytorch, tensorflow',
   siteUrl: 'https://yashitanamdeo.github.io/',
   siteLanguage: 'en_US',
   googleAnalyticsID: 'UA-45666519-2',
   googleVerification: 'DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk',
-  name: 'Yashita Namdeo',
-  location: 'Indore, India',
-  email: 'yashita.namdeo2000@gmail.com',
-  github: 'https://github.com/yashitanamdeo',
-  twitterHandle: '@',
+  name: 'Lakshmi Priya A',
+  location: 'Bangalore, India',
+  email: 'priyaannamalai2002@gmail.com',
+  github: 'https://github.com/priyaannamalai',
+  twitterHandle: '@priyaannamalai',
   socialMedia: [
     {
       name: 'GitHub',
-      url: 'https://github.com/yashitanamdeo',
+      url: 'https://github.com/priyaannamalai',
     },
     {
       name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/yashitanamdeo/',
-    },
-    {
-      name: 'Codepen',
-      url: 'https://codepen.io/yashitanamdeo',
+      url: 'https://www.linkedin.com/in/priyaannamalai/',
     },
     {
       name: 'Instagram',
-      url: 'https://www.instagram.com/yashitanamdeo',
+      url: 'https://www.instagram.com/priyaannamalai',
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com/',
+      name: 'LeetCode',
+      url: 'https://leetcode.com/priyaannamalai',
+    },
+    {
+      name: 'Goodreads',
+      url: 'https://www.goodreads.com/YOUR_PROFILE',
     },
   ],
 
@@ -46,8 +46,16 @@ module.exports = {
       url: '/#jobs',
     },
     {
-      name: 'Projects',
-      url: '/#projects',
+      name: 'Life at SAP',
+      url: '/#sap',
+    },
+    {
+      name: 'Publications',
+      url: '/#featured',
+    },
+    {
+      name: 'Certifications',
+      url: '/#certifications',
     },
     {
       name: 'Contact',
@@ -58,9 +66,9 @@ module.exports = {
   navHeight: 100,
 
   colors: {
-    green: '#64ffda',
-    navy: '#0a192f',
-    darkNavy: '#020c1b',
+    green: '#14b8a6', // Modern teal accent
+    navy: '#f5faf8', // Very light mint background
+    darkNavy: '#f5faf8', // Very light mint
   },
 
   srConfig: (delay = 200) => ({

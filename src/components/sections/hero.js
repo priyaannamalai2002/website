@@ -11,10 +11,33 @@ const StyledContainer = styled(Section)`
   flex-direction: column;
   align-items: flex-start;
   min-height: 100vh;
-  ${media.tablet`padding-top: 150px;`};
-  div {
-    width: 100%;
-  }
+  height: 100vh;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1600px;
+  ${media.desktop`
+    height: auto;
+    padding-top: 150px;
+  `};
+  ${media.tablet`
+    padding-top: 120px;
+  `};
+  ${media.phablet`
+    padding-top: 100px;
+  `};
+`;
+
+const StyledContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 50px;
+  margin: 0 auto;
+  ${media.tablet`
+    padding: 0 25px;
+  `};
 `;
 const StyledOverline = styled.h1`
   color: ${colors.green};
@@ -29,6 +52,7 @@ const StyledTitle = styled.h2`
   font-size: 80px;
   line-height: 1.1;
   margin: 0;
+  color: ${colors.lightestSlate};
   ${media.desktop`font-size: 70px;`};
   ${media.tablet`font-size: 60px;`};
   ${media.phablet`font-size: 50px;`};
@@ -45,18 +69,19 @@ const StyledSubtitle = styled.h3`
 `;
 const StyledDescription = styled.div`
   margin-top: 25px;
-  width: 50%;
+  width: 100%;
   max-width: 500px;
   a {
     ${mixins.inlineLink};
   }
+  ${media.tablet`font-size: ${fontSizes.lg};`};
 `;
 const StyledEmailLink = styled.a`
   ${mixins.bigButton};
   margin-top: 50px;
 `;
 
-const Hero = ({ data }) => {
+const Hero = ({ data, isHome }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -70,7 +95,7 @@ const Hero = ({ data }) => {
     <StyledOverline style={{ transitionDelay: '100ms' }}>{frontmatter.title}</StyledOverline>
   );
   const two = () => (
-    <StyledTitle style={{ transitionDelay: '200ms' }}>{frontmatter.name}.</StyledTitle>
+    <StyledTitle style={{ transitionDelay: '200ms' }}>{frontmatter.name}</StyledTitle>
   );
   const three = () => (
     <StyledSubtitle style={{ transitionDelay: '300ms' }}>{frontmatter.subtitle}</StyledSubtitle>
@@ -91,20 +116,27 @@ const Hero = ({ data }) => {
 
   return (
     <StyledContainer>
-      <TransitionGroup component={null}>
-        {isMounted &&
-          items.map((item, i) => (
-            <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
-              {item}
-            </CSSTransition>
-          ))}
-      </TransitionGroup>
+      <StyledContent>
+        <TransitionGroup component={null}>
+          {isMounted &&
+            items.map((item, i) => (
+              <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
+                {item}
+              </CSSTransition>
+            ))}
+        </TransitionGroup>
+      </StyledContent>
     </StyledContainer>
   );
 };
 
 Hero.propTypes = {
   data: PropTypes.array.isRequired,
+  isHome: PropTypes.bool,
+};
+
+Hero.defaultProps = {
+  isHome: false,
 };
 
 export default Hero;
