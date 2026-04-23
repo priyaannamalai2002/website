@@ -2,7 +2,7 @@
 date: '2023-05-01'
 title: 'Project Intern - Research'
 company: 'IIITDM Kancheepuram'
-location: 'Kancheepuram, India'
+location: 'Chennai, India'
 range: 'May 2023 - August 2024'
 url: 'https://www.iiitdm.ac.in/'
 logo: './iiitdm-logo.png'

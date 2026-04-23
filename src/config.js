@@ -4,19 +4,23 @@ module.exports = {
     'Lakshmi Priya A is an AI Engineer specializing in LLM-based systems, RAG pipelines, and multi-agent architectures with a strong background in healthcare AI and biomedical engineering.',
   siteKeywords:
     'Lakshmi Priya A, Lakshmi Priya, Priya, AI Engineer, Machine Learning, LLM, RAG, GenAI, Healthcare AI, SAP Labs, Deep Learning, NLP, Computer Vision, python, pytorch, tensorflow',
-  siteUrl: 'https://yashitanamdeo.github.io/',
+  siteUrl: 'https://priyaannamalai2002.github.io/portfolio/',
   siteLanguage: 'en_US',
   googleAnalyticsID: 'UA-45666519-2',
   googleVerification: 'DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk',
   name: 'Lakshmi Priya A',
   location: 'Bangalore, India',
   email: 'priyaannamalai2002@gmail.com',
-  github: 'https://github.com/priyaannamalai',
-  twitterHandle: '@priyaannamalai',
+  github: 'https://github.com/priyaannamalai2002',
+  twitterHandle: '@LakshmiPriyaAn2',
   socialMedia: [
     {
       name: 'GitHub',
-      url: 'https://github.com/priyaannamalai',
+      url: 'https://github.com/priyaannamalai2002',
+    },
+    {
+      name: 'Twitter',
+      url: 'https://x.com/LakshmiPriyaAn2',
     },
     {
       name: 'Linkedin',
@@ -24,15 +28,15 @@ module.exports = {
     },
     {
       name: 'Instagram',
-      url: 'https://www.instagram.com/priyaannamalai',
+      url: 'https://www.instagram.com/priya__annamalai',
     },
     {
       name: 'LeetCode',
-      url: 'https://leetcode.com/priyaannamalai',
+      url: 'https://leetcode.com/u/Priya_Annamalai/',
     },
     {
       name: 'Goodreads',
-      url: 'https://www.goodreads.com/YOUR_PROFILE',
+      url: 'https://www.goodreads.com/user/show/91732869-priya-annamalai',
     },
   ],
 
@@ -44,10 +48,6 @@ module.exports = {
     {
       name: 'Experience',
       url: '/#jobs',
-    },
-    {
-      name: 'Life at SAP',
-      url: '/#sap',
     },
     {
       name: 'Publications',

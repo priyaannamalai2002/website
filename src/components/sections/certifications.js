@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import styled from 'styled-components';
@@ -15,21 +14,22 @@ const StyledContainer = styled(Section)`
 const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  grid-gap: 25px;
   margin-top: 50px;
   width: 100%;
-  max-width: 600px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 
   @media (max-width: 768px) {
-    grid-gap: 15px;
-    max-width: 400px;
+    grid-gap: 20px;
+    max-width: 600px;
   }
 
   @media (max-width: 480px) {
-    grid-gap: 10px;
-    max-width: 300px;
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+    max-width: 100%;
   }
 `;
 
@@ -37,81 +37,81 @@ const StyledCertCard = styled.div`
   ${mixins.boxShadow};
   background-color: ${colors.lightNavy};
   border-radius: ${theme.borderRadius};
-  padding: 20px;
+  padding: 30px 25px;
   transition: ${theme.transition};
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  aspect-ratio: 1 / 1;
+  justify-content: flex-start;
+  gap: 20px;
   cursor: pointer;
 
   @media (max-width: 768px) {
-    padding: 15px;
+    padding: 25px 20px;
   }
 
   @media (max-width: 480px) {
-    padding: 10px;
+    padding: 20px 15px;
   }
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-7px);
+    box-shadow: 0 20px 30px -15px ${colors.shadowNavy};
     background-color: ${colors.navy};
   }
 
   &:hover img {
-    transform: scale(1.05);
+    filter: none;
+    transform: scale(1.03);
   }
 `;
 
 const StyledCertImageWrapper = styled.div`
-  width: 60px;
-  height: 60px;
-  margin-bottom: 10px;
+  width: 200px;
+  height: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  background-color: ${colors.navy};
+  border-radius: ${theme.borderRadius};
+  overflow: hidden;
+  margin: 0 auto;
 
   @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
+    width: 160px;
+    height: 220px;
   }
 
   @media (max-width: 480px) {
-    width: 40px;
-    height: 40px;
+    width: 140px;
+    height: 200px;
   }
 `;
 
 const StyledCertImage = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  padding: 15px;
+  filter: grayscale(20%) contrast(1) brightness(95%);
   transition: ${theme.transition};
 `;
 
 const StyledCertTitle = styled.h3`
-  font-size: ${fontSizes.sm};
+  font-size: ${fontSizes.md};
   font-weight: 600;
   color: ${colors.lightestSlate};
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.3;
   margin: 0;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   @media (max-width: 768px) {
-    font-size: ${fontSizes.xs};
+    font-size: ${fontSizes.sm};
   }
 
   @media (max-width: 480px) {
-    font-size: ${fontSizes.xxs};
+    font-size: ${fontSizes.xs};
   }
 `;
 
@@ -158,10 +158,6 @@ const CertificationsSection = () => {
       </StyledGrid>
     </StyledContainer>
   );
-};
-
-CertificationsSection.propTypes = {
-  data: PropTypes.array.isRequired,
 };
 
 export default CertificationsSection;

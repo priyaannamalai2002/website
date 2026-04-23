@@ -69,6 +69,9 @@ const Layout = ({ children, location }) => {
     if (isLoading) {
       return;
     }
+    // Always scroll to top first
+    window.scrollTo(0, 0);
+
     if (location.hash) {
       const id = location.hash.substring(1); // location.hash without the '#'
       setTimeout(() => {

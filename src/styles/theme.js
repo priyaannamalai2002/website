@@ -1,22 +1,21 @@
 import { hex2rgba } from '@utils';
 
-const ACCENT = '#14b8a6'; // Modern teal
-const DARK_BG = '#f5faf8'; // Very light mint
-const BG = '#f5faf8'; // Very light mint
+const ACCENT = '#c17a4a'; // Warm terracotta
+const BG = '#faf6f0'; // Warm cream
 
 const theme = {
   colors: {
-    darkNavy: DARK_BG,
+    darkNavy: '#f0e9de',
     navy: BG,
-    lightNavy: '#e8f5f2', // Light mint
-    lightestNavy: '#d1ebe5', // Lighter mint
-    slate: '#475569', // Medium slate for text
-    lightSlate: '#64748b', // Lighter slate
-    lightestSlate: '#0f172a', // Deep slate for headings
-    white: '#0a0f1a', // Almost black for primary text
+    lightNavy: '#ede4d8',
+    lightestNavy: '#d9cbbf',
+    slate: '#7a6555',
+    lightSlate: '#5c4a3a',
+    lightestSlate: '#2c1a0e',
+    white: '#1a0f08',
     green: ACCENT,
-    transGreen: hex2rgba(ACCENT, 0.07),
-    shadowNavy: hex2rgba('#0f172a', 0.1),
+    transGreen: hex2rgba(ACCENT, 0.08),
+    shadowNavy: hex2rgba('#2c1a0e', 0.12),
   },
 
   fonts: {

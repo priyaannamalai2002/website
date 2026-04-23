@@ -1,10 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import styled from 'styled-components';
-import { theme, mixins, media, Section, Heading } from '@styles';
+import { theme, media, Section, Heading } from '@styles';
 const { colors, fontSizes } = theme;
 
 const StyledContainer = styled(Section)`
@@ -32,64 +31,13 @@ const StyledPublicationCard = styled.a`
   cursor: pointer;
   transition: ${theme.transition};
   display: block;
+  background-color: ${colors.lightNavy};
+  border-radius: ${theme.borderRadius};
+  padding: 20px;
 
   &:hover {
     transform: translateY(-7px);
-  }
-`;
-
-const StyledImg = styled(Img)`
-  width: 100%;
-  height: 100%;
-  border-radius: ${theme.borderRadius};
-  transition: ${theme.transition};
-  mix-blend-mode: multiply;
-  filter: grayscale(100%) contrast(1) brightness(90%);
-
-  & > div {
-    height: 100% !important;
-  }
-
-  img {
-    object-fit: cover !important;
-    height: 100% !important;
-  }
-`;
-
-const StyledImageWrapper = styled.div`
-  ${mixins.boxShadow};
-  position: relative;
-  z-index: 1;
-  background-color: ${colors.green};
-  border-radius: ${theme.borderRadius};
-  overflow: hidden;
-  transition: ${theme.transition};
-  width: 100%;
-  height: 200px;
-  margin-bottom: 20px;
-
-  &:hover {
-    &:before {
-      background: transparent;
-    }
-    ${StyledImg} {
-      filter: none;
-    }
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 3;
-    transition: ${theme.transition};
-    background-color: ${colors.navy};
-    mix-blend-mode: screen;
+    box-shadow: 0 20px 30px -15px ${colors.shadowNavy};
   }
 `;
 
@@ -128,7 +76,7 @@ const Featured = ({ data }) => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, cover } = frontmatter;
+            const { external, title } = frontmatter;
 
             return (
               <StyledPublicationCard
@@ -137,9 +85,6 @@ const Featured = ({ data }) => {
                 target="_blank"
                 rel="nofollow noopener noreferrer"
                 ref={el => (revealProjects.current[i] = el)}>
-                <StyledImageWrapper>
-                  <StyledImg fluid={cover.childImageSharp.fluid} alt={title} />
-                </StyledImageWrapper>
                 <StyledTitle>{title}</StyledTitle>
                 <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
               </StyledPublicationCard>

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import styled from 'styled-components';
@@ -11,169 +10,137 @@ const StyledContainer = styled(Section)`
   position: relative;
 `;
 
-const StyledContent = styled.div`
+const StyledTimelineContainer = styled.div`
   position: relative;
-  grid-column: 1 / 7;
-  grid-row: 1 / -1;
-  ${media.thone`
-    grid-column: 1 / -1;
-    padding: 40px 40px 30px;
-    z-index: 5;
-  `};
-  ${media.phablet`padding: 30px 25px 20px;`};
-`;
+  max-width: 800px;
+  margin: 50px auto 0;
 
-const StyledLabel = styled.h4`
-  font-size: ${fontSizes.smish};
-  font-weight: normal;
-  color: ${colors.green};
-  font-family: ${fonts.SFMono};
-  margin-top: 10px;
-  padding-top: 0;
-`;
-
-const StyledJobTitle = styled.h5`
-  font-size: 28px;
-  margin: 0 0 20px;
-  color: ${colors.lightestSlate};
-  ${media.tablet`font-size: 24px;`};
-  ${media.thone`color: ${colors.white};`};
-  a {
-    ${media.tablet`display: block;`};
+  &::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: ${colors.lightGreen};
+    ${media.thone`
+      left: 15px;
+    `};
   }
 `;
 
-const StyledDescription = styled.div`
-  ${mixins.boxShadow};
+const StyledJob = styled.div`
   position: relative;
-  z-index: 2;
-  padding: 25px;
-  background-color: ${colors.lightNavy};
-  color: ${colors.lightSlate};
-  font-size: ${fontSizes.lg};
-  border-radius: ${theme.borderRadius};
+  padding-left: 100px;
+  margin-bottom: 50px;
   ${media.thone`
-    background-color: transparent;
-    padding: 20px 0;
-    box-shadow: none;
-    &:hover {
-      box-shadow: none;
-    }
+    padding-left: 50px;
   `};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background: ${colors.green};
+    border: 3px solid ${colors.navy};
+    border-radius: 50%;
+    transition: ${theme.transition};
+    ${media.thone`
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-width: 2px;
+    `};
+  }
+
+  &:hover::before {
+    background: ${colors.lightGreen};
+    box-shadow: 0 0 0 8px rgba(100, 255, 218, 0.1);
+  }
+`;
+
+const StyledContent = styled.div`
+  ${mixins.boxShadow};
+  background-color: ${colors.lightNavy};
+  padding: 30px;
+  border-radius: ${theme.borderRadius};
+  transition: ${theme.transition};
+
+  &:hover {
+    box-shadow: 0 10px 30px -15px ${colors.shadowNavy};
+  }
+`;
+
+const StyledCompanyInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledCompanyName = styled.h5`
+  font-size: ${fontSizes.lg};
+  margin: 0;
+  color: ${colors.lightestSlate};
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      color: ${colors.green};
+    }
+  }
+`;
+
+const StyledJobTitle = styled.p`
+  font-size: ${fontSizes.md};
+  margin: 0;
+  color: ${colors.green};
+  font-family: ${fonts.SFMono};
+  font-weight: 500;
+`;
+
+const StyledLabel = styled.p`
+  font-size: ${fontSizes.smish};
+  color: ${colors.slate};
+  font-family: ${fonts.SFMono};
+  margin: 0 0 15px 0;
+  padding-top: 5px;
+`;
+
+const StyledDescription = styled.div`
+  color: ${colors.lightSlate};
+  font-size: ${fontSizes.sm};
+  line-height: 1.6;
+
   p {
-    margin: 0;
+    margin: 0 0 10px 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   a {
     ${mixins.inlineLink};
   }
   ul {
     ${mixins.fancyList};
+    margin: 10px 0;
+    font-size: ${fontSizes.sm};
   }
 `;
 
-const StyledLinkWrapper = styled.div`
+const StyledLocationWrapper = styled.div`
   display: flex;
   align-items: center;
-  position: relative;
-  margin-top: 10px;
-  margin-left: -10px;
-  color: ${colors.lightestSlate};
-  font-family: ${fonts.SFMono};
-  font-size: ${fontSizes.smish};
-  padding: 10px;
-`;
-
-const StyledFeaturedImg = styled(Img)`
-  width: 100%;
-  max-width: 100%;
-  vertical-align: middle;
-  border-radius: ${theme.borderRadius};
-  position: relative;
-  mix-blend-mode: multiply;
-  filter: grayscale(100%) contrast(1) brightness(90%);
-  ${media.tablet`
-    object-fit: cover;
-    width: auto;
-    height: 100%;
-    filter: grayscale(100%) contrast(1) brightness(80%);
-  `};
-`;
-
-const StyledImgContainer = styled.a`
-  ${mixins.boxShadow};
-  grid-column: 6 / -1;
-  grid-row: 1 / -1;
-  position: relative;
-  z-index: 1;
-  background-color: ${colors.green};
-  border-radius: ${theme.radius + 1}px;
-  transition: ${theme.transition};
-  ${media.tablet`height: 100%;`};
-  ${media.thone`
-    grid-column: 1 / -1;
-    opacity: 0.25;
-  `};
-  &:hover,
-  &:focus {
-    background: transparent;
-    &:before,
-    ${StyledFeaturedImg} {
-      background: transparent;
-      filter: none;
-    }
-  }
-  &:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 3;
-    transition: ${theme.transition};
-    background-color: ${colors.navy};
-    mix-blend-mode: screen;
-  }
-`;
-
-const StyledJob = styled.div`
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(12, 1fr);
-  align-items: center;
-  margin-bottom: 100px;
-  ${media.thone`
-    margin-bottom: 70px;
-  `};
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-  &:nth-of-type(odd) {
-    ${StyledContent} {
-      grid-column: 7 / -1;
-      text-align: right;
-      ${media.thone`
-        grid-column: 1 / -1;
-        padding: 40px 40px 30px;
-      `};
-      ${media.phablet`padding: 30px 25px 20px;`};
-    }
-    ${StyledLinkWrapper} {
-      justify-content: flex-end;
-      margin-left: 0;
-      margin-right: -10px;
-    }
-    ${StyledImgContainer} {
-      grid-column: 1 / 8;
-      ${media.tablet`height: 100%;`};
-      ${media.thone`
-        grid-column: 1 / -1;
-        opacity: 0.25;
-      `};
-    }
-  }
+  color: ${colors.slate};
+  font-size: ${fontSizes.sm};
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid ${colors.navy};
 `;
 
 const Jobs = ({ data }) => {
@@ -190,45 +157,46 @@ const Jobs = ({ data }) => {
     <StyledContainer id="jobs">
       <Heading ref={revealTitle}>Where I&apos;ve Worked</Heading>
 
-      <div>
+      <StyledTimelineContainer>
         {jobsList &&
           jobsList.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { url, title, company, range, location, logo } = frontmatter;
+            const { url, title, company, range, location } = frontmatter;
 
             return (
               <StyledJob key={i} ref={el => (revealJobs.current[i] = el)}>
                 <StyledContent>
+                  <StyledCompanyInfo>
+                    <StyledCompanyName>
+                      {url ? (
+                        <a
+                          href={url}
+                          target="_blank"
+                          rel="nofollow noopener noreferrer"
+                          aria-label="Company Link">
+                          {company}
+                        </a>
+                      ) : (
+                        company
+                      )}
+                    </StyledCompanyName>
+                    <StyledJobTitle>{title}</StyledJobTitle>
+                  </StyledCompanyInfo>
                   <StyledLabel>{range}</StyledLabel>
-                  <StyledJobTitle>
-                    {url ? (
-                      <a
-                        href={url}
-                        target="_blank"
-                        rel="nofollow noopener noreferrer"
-                        aria-label="Company Link">
-                        {title} @ {company}
-                      </a>
-                    ) : (
-                      `${title} @ ${company}`
-                    )}
-                  </StyledJobTitle>
                   <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
-                  {location && <StyledLinkWrapper>📍 {location}</StyledLinkWrapper>}
+                  {location && (
+                    <StyledLocationWrapper>
+                      <span role="img" aria-label="location">
+                        📍
+                      </span>{' '}
+                      {location}
+                    </StyledLocationWrapper>
+                  )}
                 </StyledContent>
-
-                {logo && logo.childImageSharp && (
-                  <StyledImgContainer
-                    href={url ? url : '#'}
-                    target="_blank"
-                    rel="nofollow noopener noreferrer">
-                    <StyledFeaturedImg fluid={logo.childImageSharp.fluid} alt={company} />
-                  </StyledImgContainer>
-                )}
               </StyledJob>
             );
           })}
-      </div>
+      </StyledTimelineContainer>
     </StyledContainer>
   );
 };

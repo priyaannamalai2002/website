@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { Layout, Hero, About, Jobs, SAP, Featured, Certifications, Contact } from '@components';
+import { Layout, Hero, About, Jobs, Featured, Certifications, Contact } from '@components';
 import styled from 'styled-components';
 import { Main } from '@styles';
 
@@ -17,7 +17,6 @@ const IndexPage = ({ location, data }) => {
         <Hero data={data.hero.edges} isHome={isHome} />
         <About data={data.about.edges} />
         <Jobs data={data.jobs.edges} />
-        <SAP data={data.sap.edges} />
         <Featured data={data.featured.edges} />
         <Certifications data={data.certifications.edges} />
         <Contact data={data.contact.edges} />
@@ -77,16 +76,6 @@ export const pageQuery = graphql`
                 }
               }
             }
-          }
-          html
-        }
-      }
-    }
-    sap: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/sap/" } }) {
-      edges {
-        node {
-          frontmatter {
-            title
           }
           html
         }

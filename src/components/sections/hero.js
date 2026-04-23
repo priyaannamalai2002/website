@@ -11,25 +11,20 @@ const StyledContainer = styled(Section)`
   flex-direction: column;
   align-items: flex-start;
   min-height: 100vh;
-  padding: 0 !important;
+  padding-top: ${theme.navHeight};
+  padding-bottom: 0;
   margin: 0 auto;
   max-width: 100%;
   width: 100%;
-  
+
   ${media.desktop`
-    min-height: 100vh;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding-top: ${theme.navHeight};
   `};
   ${media.tablet`
-    min-height: 100vh;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding-top: ${theme.navScrollHeight};
   `};
   ${media.phablet`
-    min-height: 100vh;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding-top: ${theme.navScrollHeight};
   `};
 `;
 
@@ -40,17 +35,7 @@ const StyledContent = styled.div`
   width: 100%;
   max-width: 1000px;
   padding: 0;
-  margin: 0 auto;
-  
-  ${media.desktop`
-    padding: 0 100px;
-  `};
-  ${media.tablet`
-    padding: 0 50px;
-  `};
-  ${media.phablet`
-    padding: 0 25px;
-  `};
+  margin: 0;
 `;
 const StyledOverline = styled.h1`
   color: ${colors.green};
@@ -128,7 +113,7 @@ const Hero = ({ data }) => {
   const items = [one, two, three, four, five];
 
   return (
-    <StyledContainer>
+    <StyledContainer id="hero">
       <StyledContent>
         <TransitionGroup component={null}>
           {isMounted &&

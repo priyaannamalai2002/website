@@ -6,7 +6,6 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { throttle } from '@utils';
 import { navLinks, navHeight } from '@config';
 import { Menu } from '@components';
-import { IconLogo } from '@components/icons';
 import styled from 'styled-components';
 import { theme, mixins, media } from '@styles';
 const { colors, fontSizes, fonts, loaderDelay } = theme;
@@ -15,7 +14,7 @@ const StyledContainer = styled.header`
   ${mixins.flexBetween};
   position: fixed;
   top: 0;
-  padding: 0px 50px;
+  padding: 0 50px;
   background-color: ${colors.navy};
   transition: ${theme.transition};
   z-index: 11;
@@ -29,8 +28,9 @@ const StyledContainer = styled.header`
   transform: translateY(
     ${props => (props.scrollDirection === 'down' ? `-${theme.navScrollHeight}` : '0px')}
   );
-  ${media.desktop`padding: 0 40px;`};
+  ${media.desktop`padding: 0 50px;`};
   ${media.tablet`padding: 0 25px;`};
+  ${media.phablet`padding: 0 25px;`};
 `;
 const StyledNav = styled.nav`
   ${mixins.flexBetween};
@@ -40,26 +40,6 @@ const StyledNav = styled.nav`
   font-family: ${fonts.SFMono};
   counter-reset: item 0;
   z-index: 12;
-`;
-const StyledLogo = styled.div`
-  ${mixins.flexCenter};
-  a {
-    display: block;
-    color: ${colors.green};
-    width: 42px;
-    height: 42px;
-    &:hover,
-    &:focus {
-      svg {
-        fill: ${colors.transGreen};
-      }
-    }
-    svg {
-      fill: none;
-      transition: ${theme.transition};
-      user-select: none;
-    }
-  }
 `;
 const StyledHamburger = styled.div`
   ${mixins.flexCenter};
@@ -139,24 +119,19 @@ const StyledList = styled.ol`
   list-style: none;
 `;
 const StyledListItem = styled.li`
-  margin: 0 10px;
+  margin: 0 5px;
   position: relative;
-  font-size: ${fontSizes.smish};
+  font-size: ${fontSizes.xs};
   counter-increment: item 1;
   &:before {
     content: '0' counter(item) '.';
     text-align: right;
     color: ${colors.green};
-    font-size: ${fontSizes.xs};
+    font-size: 10px;
   }
 `;
 const StyledListLink = styled(Link)`
-  padding: 12px 10px;
-`;
-const StyledResumeButton = styled.a`
-  ${mixins.smallButton};
-  margin-left: 10px;
-  font-size: ${fontSizes.smish};
+  padding: 12px 7px;
 `;
 
 const DELTA = 5;
@@ -242,24 +217,6 @@ class Nav extends Component {
           <body className={menuOpen ? 'blur' : ''} />
         </Helmet>
         <StyledNav>
-          <TransitionGroup component={null}>
-            {isMounted && (
-              <CSSTransition classNames={fadeClass} timeout={timeout}>
-                <StyledLogo tabindex="-1">
-                  {isHome ? (
-                    <a href="/" aria-label="home">
-                      <IconLogo />
-                    </a>
-                  ) : (
-                    <Link to="/" aria-label="home">
-                      <IconLogo />
-                    </Link>
-                  )}
-                </StyledLogo>
-              </CSSTransition>
-            )}
-          </TransitionGroup>
-
           <TransitionGroup component={null}>
             {isMounted && (
               <CSSTransition classNames={fadeClass} timeout={timeout}>
