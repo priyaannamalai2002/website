@@ -4,7 +4,7 @@ module.exports = {
     'Lakshmi Priya A is an AI Engineer specializing in LLM-based systems, RAG pipelines, and multi-agent architectures with a strong background in healthcare AI and biomedical engineering.',
   siteKeywords:
     'Lakshmi Priya A, Lakshmi Priya, Priya, AI Engineer, Machine Learning, LLM, RAG, GenAI, Healthcare AI, SAP Labs, Deep Learning, NLP, Computer Vision, python, pytorch, tensorflow',
-  siteUrl: 'https://priyaannamalai2002.github.io/portfolio/',
+  siteUrl: 'https://priyaannamalai2002.github.io/website/',
   siteLanguage: 'en_US',
   googleAnalyticsID: 'UA-45666519-2',
   googleVerification: 'DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk',
