@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://priyaannamalai2002.github.io/sitemap.xml
+Host: https://priyaannamalai2002.github.io
