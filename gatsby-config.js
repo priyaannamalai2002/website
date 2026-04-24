@@ -1,6 +1,7 @@
 const config = require('./src/config');
 
 module.exports = {
+  pathPrefix: '/website',
   siteMetadata: {
     title: config.siteTitle,
     siteUrl: config.siteUrl,
@@ -24,6 +25,7 @@ module.exports = {
         theme_color: config.colors.navy,
         display: 'minimal-ui',
         icon: 'src/images/logo.png',
+        legacy: true,
       },
     },
     `gatsby-plugin-offline`,
