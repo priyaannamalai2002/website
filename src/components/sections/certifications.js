@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { withPrefix } from 'gatsby';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import styled from 'styled-components';
@@ -119,19 +120,19 @@ const CertificationsSection = () => {
   const certifications = [
     {
       title: 'SAP Certified - SAP Generative AI Developer',
-      image: '/certifications/sap_gen.png',
+      image: withPrefix('/certifications/sap_gen.png'),
     },
     {
       title: 'Databases and SQL for Data Science with Python (with Honors)',
-      image: '/certifications/ibm.png',
+      image: withPrefix('/certifications/ibm.png'),
     },
     {
       title: 'Data Analysis with R Programming',
-      image: '/certifications/google.png',
+      image: withPrefix('/certifications/google.png'),
     },
     {
       title: 'Programming for Everybody (Getting Started with Python)',
-      image: '/certifications/python.png',
+      image: withPrefix('/certifications/python.png'),
     },
   ];
 
